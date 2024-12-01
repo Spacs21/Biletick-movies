@@ -1,16 +1,22 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { FreeMode, Navigation, Thumbs } from 'swiper/modules'
+import { FreeMode, Navigation, Thumbs, Autoplay } from "swiper/modules";
 import 'swiper/css'
 import 'swiper/css/free-mode'
 import 'swiper/css/thumbs'
 import { ChevronLeft, ChevronRight, Play } from 'lucide-react'
 import movie from "../../assets/movie.png"
 import {slides} from "../../static"
+import { useGetMovieQuery } from '../../redux/api/movie-api'
+import "swiper/css";
 
 const Movies = () => {
     const [thumbsSwiper, setThumbsSwiper] = useState(null)
+    const {data} = useGetMovieQuery({type: "popular", params: ({page : 1})})
+    console.log(data?.results);
+    
+    
   return (
      <div className="container mx-auto 2xl:px-20">
       <div className="relative group">
@@ -21,24 +27,24 @@ const Movies = () => {
           modules={[FreeMode, Navigation, Thumbs]}
           className="rounded-xl overflow-hidden "
         >
-          {slides.map((slide) => (
-            <SwiperSlide key={slide.id}>
+          {data?.results?.map((movie) => (
+            <SwiperSlide key={movie.id}>
               <div className="relative aspect-[16/9]">
                 <img
-                  src={slide.image}
+                  src={import.meta.env.VITE_IMAGE_URL + movie.backdrop_path}
                   className="w-full h-full object-cover"
                 />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/75 to-transparent">
                     <div className=" p-8 text-white flex flex-col items-center h-full justify-end">
-                      <h1 className="text-4xl font-bold mb-2">{slide.title}</h1>
+                      <h1 className="text-4xl font-bold mb-2">{movie.original_title}</h1>
                       <div className="flex items-center gap-2 text-sm opacity-90 mb-4">
-                        <span>{slide.year}</span>
+                        <span>{movie.release_date}</span>
                         <span>•</span>
-                        <span>{slide.genre}</span>
+                        <span>Боевик</span>
                         <span>•</span>
-                        <span>{slide.duration}</span>
+                        <span>{}</span>
                         <span>•</span>
-                        <span>{slide.rating}</span>
+                        <span>{movie.vote_average}</span>
                       </div>
                       <button className="bg-white text-red-700 px-8 py-3 rounded-lg flex items-center gap-2 hover:bg-white/90 transition-colors">
                         <Play className="w-5 h-5 text-red-700" />
@@ -57,21 +63,26 @@ const Movies = () => {
           </button>
         </Swiper>
 
-        <div className="mt-4">
-          <Swiper
+          <div className="mt-4">
+            <Swiper
             onSwiper={setThumbsSwiper}
             spaceBetween={10}
             slidesPerView={4}
             freeMode={true}
             watchSlidesProgress={true}
-            modules={[FreeMode, Navigation, Thumbs]}
+            loop={true}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
+            modules={[FreeMode, Navigation, Thumbs, Autoplay]}
             className="thumbs-swiper w-[700px] max-lg:w-full"
           >
-            {slides.map((slide) => (
-              <SwiperSlide key={slide.id}>
+            {data?.results?.slice(0, 5).map((movie) => (
+              <SwiperSlide key={movie.id}>
                 <div className="aspect-[16/9] cursor-pointer rounded-lg overflow-hidden">
                   <img
-                    src={slide.image}
+                    src={import.meta.env.VITE_IMAGE_URL + movie.backdrop_path}
                     className="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
                   />
                 </div>
