@@ -1,12 +1,14 @@
 import React from 'react'
 import { movies } from '../../static'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation } from 'swiper/modules'
+import { FreeMode, Navigation, Thumbs, Autoplay } from "swiper/modules";
 import { ChevronLeft, ChevronRight, Link } from 'lucide-react'
 import 'swiper/css'
 import 'swiper/css/navigation'
+import { useGetMovieQuery } from '../../redux/api/movie-api'
 
 const Carousel = () => {
+  const {data} = useGetMovieQuery({type: "popular", params: ({page : 10})})
   return (
     <div>
       <div className="py-8">
@@ -23,21 +25,26 @@ const Carousel = () => {
 
         <div className="relative group">
           <Swiper
-            modules={[Navigation]}
+           loop={true}
+           autoplay={{
+             delay: 3000,
+             disableOnInteraction: false,
+           }}
+            modules={[Navigation, Autoplay]}
             navigation={{
               nextEl: '.swiper-button-next',
               prevEl: '.swiper-button-prev',
             }}
             slidesPerView={4}
             spaceBetween={24}
-            className="!overflow-visible"
+            className="!overflow-hidden"
           >
-            {movies.map((movie) => (
+            {data?.results?.map((movie) => (
               <SwiperSlide key={movie.id}>
                 <div className="group/card">
                   <div className="relative aspect-[2/3] rounded-lg overflow-hidden bg-zinc-900">
                     <img
-                      src={movie.image}
+                      src={import.meta.env.VITE_IMAGE_URL + movie.poster_path}
                       className="w-full h-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-300" />
@@ -45,13 +52,12 @@ const Carousel = () => {
                       <h3 className="text-white font-medium mb-1">
                         {movie.title}
                       </h3>
-                      {movie.subtitle && (
+                      {movie.adult && (
                         <div className="text-xs text-gray-300 mb-1">
-                          {movie.subtitle}
+                          18+
                         </div>
                       )}
                       <div className="text-xs text-gray-400">
-                        {movie.genres.join(', ')}
                       </div>
                     </div>
                   </div>

@@ -13,7 +13,7 @@ import "swiper/css";
 
 const Movies = () => {
     const [thumbsSwiper, setThumbsSwiper] = useState(null)
-    const {data} = useGetMovieQuery({type: "popular", params: ({page : 1})})
+    const {data} = useGetMovieQuery({type: "popular", params: ({page : 2})})
     console.log(data?.results);
     
     
@@ -23,11 +23,16 @@ const Movies = () => {
         <Swiper
           spaceBetween={10}
           navigation={false}
+          loop={true}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
           thumbs={{ swiper: thumbsSwiper }}
-          modules={[FreeMode, Navigation, Thumbs]}
+          modules={[FreeMode, Navigation, Thumbs, Autoplay]}
           className="rounded-xl overflow-hidden "
         >
-          {data?.results?.map((movie) => (
+          {data?.results?.slice(0, 5).map((movie) => (
             <SwiperSlide key={movie.id}>
               <div className="relative aspect-[16/9]">
                 <img
