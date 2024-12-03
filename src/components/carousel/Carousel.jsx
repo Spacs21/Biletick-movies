@@ -6,21 +6,21 @@ import { ChevronLeft, ChevronRight, Link } from 'lucide-react'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import { useGetMovieQuery } from '../../redux/api/movie-api'
+import { NavLink } from 'react-router-dom';
 
 const Carousel = () => {
-  const {data} = useGetMovieQuery({type: "popular", params: ({page : 10})})
+  const {data} = useGetMovieQuery({type: "upcoming", params: ({page : 2}), include_adult: false})
   return (
     <div>
       <div className="py-8">
       <div className="container max-w-[1300px] mx-auto px-4">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-white text-xl">На неделе</h2>
-          <Link 
-            href="#" 
-            className="text-[#FF0000] hover:text-red-400 transition-colors text-sm"
-          >
+          <NavLink
+          to={"all"} 
+            className="text-[#FF0000] hover:text-red-400 transition-colors text-sm">
             Показать все &gt;
-          </Link>
+          </NavLink>
         </div>
 
         <div className="relative group">

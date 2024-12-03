@@ -17,7 +17,7 @@ const Header = () => {
     <div className="max-w-6xl mx-auto px-4">
       <div className="flex items-center justify-between h-16">
         <div className="flex-shrink-0">
-          <NavLink className="block">
+          <NavLink to={"/"} className="block">
             <img 
               src={logo}
               alt="BILDTICK"
@@ -27,12 +27,12 @@ const Header = () => {
         </div>
         <div className="hidden md:flex items-center justify-center flex-1 max-w-2xl mx-8">
           <div className="flex space-x-8">
-            <NavLink className="flex flex-col items-center group px-3 py-2 text-sm transition-colors duration-200 hover:text-red-500">
+            <NavLink to={"/"} className="flex flex-col items-center group px-3 py-2 text-sm transition-colors duration-200 hover:text-red-500">
               <IoTv className="w-5 h-5 mb-1 transition-transform duration-200 group-hover:scale-110" />
               <span>Афиша</span>
             </NavLink>
 
-            <NavLink className="flex flex-col items-center group px-3 py-2 text-sm transition-colors duration-200 hover:text-red-500">
+            <NavLink to={"/all"} className="flex flex-col items-center group px-3 py-2 text-sm transition-colors duration-200 hover:text-red-500">
               <MdLocalMovies className="w-5 h-5 mb-1 transition-transform duration-200 group-hover:scale-110" />
               <span>Сеансы</span>
             </NavLink>

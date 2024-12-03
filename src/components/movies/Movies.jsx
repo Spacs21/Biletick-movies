@@ -13,7 +13,7 @@ import "swiper/css";
 
 const Movies = () => {
     const [thumbsSwiper, setThumbsSwiper] = useState(null)
-    const {data} = useGetMovieQuery({type: "popular", params: ({page : 2})})
+    const {data} = useGetMovieQuery({type: "popular", params: ({page : 2}), include_adult: false})
     console.log(data?.results);
     
     
