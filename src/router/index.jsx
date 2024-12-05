@@ -5,6 +5,7 @@ import Home from '../pages/home/Home'
 import Layout from '../pages/layout/Layout'
 import Error from '../components/error/Error'
 import Detail from '../pages/detail/Detail'
+import Search from '../pages/search/Search'
 
 const Router = () => {
   return (
@@ -13,6 +14,7 @@ const Router = () => {
             <Route path='/' element={<Home/>}/>
             <Route path='/all' element={<About/>}/>
             <Route path='/movie/:id' element={<Detail/>}/>
+            <Route path='/search' element={<Search/>}/>
         </Route>
         <Route path='*' element={<Error/>}/>
     </Routes>
