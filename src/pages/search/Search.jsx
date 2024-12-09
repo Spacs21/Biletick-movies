@@ -2,12 +2,14 @@ import React, { useRef, useState } from 'react'
 import Content from '../../components/content/Content'
 import { useGetMovieBySearchQuery } from '../../redux/api/movie-api'
 import { FaSearch } from 'react-icons/fa'
+import { useTranslation } from 'react-i18next'
 
 const Search = () => {
   const searchValue = useRef(null)
   const [search, setSearch] = useState("")
   const [isFocused, setIsFocused] = useState(false)
   const {data, isLoading, error} = useGetMovieBySearchQuery({query: search}, {skip: !search})
+  const {t, i18n} = useTranslation()
   
   const handleSearch = e => {
     e.preventDefault()
@@ -22,7 +24,7 @@ const Search = () => {
             <input
               ref={searchValue}
               type="search"
-              placeholder="Search for movies..."
+              placeholder={t('search')}
               className="w-full bg-gray-900 text-white border-2 border-red-600 rounded-full py-4 px-6 pr-16 text-xl placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-300 ease-in-out"
               onFocus={() => setIsFocused(true)}
               onBlur={() => setIsFocused(false)}

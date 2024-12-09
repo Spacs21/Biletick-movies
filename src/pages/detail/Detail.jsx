@@ -1,11 +1,13 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useGetDetailImagesQuery, useGetDetailQuery } from '../../redux/api/movie-api'
+import { useTranslation } from 'react-i18next'
 
 const Detail = () => {
     const { id } = useParams()
     const { data } = useGetDetailQuery(id)
     const { data: images } = useGetDetailImagesQuery(id)
+    const {t, i18n} = useTranslation()
 
     return (
         <div className="bg-black min-h-screen text-white">
@@ -19,7 +21,7 @@ const Detail = () => {
                 <div className="absolute bottom-0 left-0 right-0 p-8">
                     <h1 className="text-4xl font-bold mb-4">{data?.title}</h1>
                     <button className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-md font-medium transition-colors duration-300">
-                        Buy ticket
+                        {t('buy')}
                     </button>
                 </div>
             </div>
@@ -33,26 +35,26 @@ const Detail = () => {
                         />
                     </div>
                     <div className="md:col-span-2">
-                        <h2 className="text-2xl font-bold mb-4">Overview</h2>
+                        <h2 className="text-2xl font-bold mb-4">{t('detail.overview')}</h2>
                         <p className="text-gray-300 mb-6">{data?.overview}</p>
 
                         <div className="grid grid-cols-2 gap-4 text-sm">
                             <div>
-                                <span className="font-bold">Release Date:</span> {data?.release_date}
+                                <span className="font-bold">{t('detail.releaseDate')}</span> {data?.release_date}
                             </div>
                             <div>
-                                <span className="font-bold">Runtime:</span> {data?.runtime} minutes
+                                <span className="font-bold">{t('detail.runtime')}</span> {data?.runtime} minutes
                             </div>
                             <div>
-                                <span className="font-bold">Genres:</span> {data?.genres?.map(genre => genre.name).join(', ')}
+                                <span className="font-bold">{t('detail.genres')}</span> {data?.genres?.map(genre => genre.name).join(', ')}
                             </div>
                             <div>
-                                <span className="font-bold">Production:</span> {data?.production_countries?.map(country => country.name).join(', ')}
+                                <span className="font-bold">{t('detail.production')}</span> {data?.production_countries?.map(country => country.name).join(', ')}
                             </div>
                         </div>
                     </div>
                 </div>
-                <h2 className="text-2xl font-bold mb-4">Gallery</h2>
+                <h2 className="text-2xl font-bold mb-4">{t('detail.gallery')}</h2>
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
                     {images?.backdrops?.slice(0, 12)?.map(image => (
                         <img 
@@ -65,7 +67,7 @@ const Detail = () => {
                 </div>
                 <div className="text-center mt-12">
                     <button className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-md font-medium transition-colors duration-300">
-                        Buy ticket
+                        {t('buy')}
                     </button>
                 </div>
             </div>
@@ -74,4 +76,3 @@ const Detail = () => {
 }
 
 export default Detail
-

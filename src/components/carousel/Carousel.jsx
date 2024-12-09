@@ -7,19 +7,21 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import { useGetMovieQuery } from '../../redux/api/movie-api'
 import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const Carousel = () => {
+  const {t, i18n} = useTranslation()
   const {data} = useGetMovieQuery({type: "upcoming", params: ({page : 2}), include_adult: false})
   return (
     <div>
       <div className="py-8">
       <div className="container max-w-[1300px] mx-auto px-4">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-white text-xl">На неделе</h2>
+          <h2 className="text-white text-xl">{t('week.title')}</h2>
           <NavLink
           to={"all"} 
             className="text-[#FF0000] hover:text-red-400 transition-colors text-sm">
-            Показать все &gt;
+            {t('week.more')} &gt;
           </NavLink>
         </div>
 

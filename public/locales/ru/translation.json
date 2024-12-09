@@ -1,0 +1,68 @@
+{
+    "lang": "ru",
+    "flag": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f3/Flag_of_Russia.svg/1200px-Flag_of_Russia.svg.png",
+    "genres": "Жанры",
+    "buy": "Купить Билет",
+    "search": "Поиск фильмов...",
+    "week": {
+        "title": "На неделе",
+        "more": "Показать все"
+    },
+    "header": {
+        "home": "Главная",
+        "genres": "Жанры",
+        "tickets": "Билеты",
+        "search": "Поиск"
+    },
+    "sign": "Войти",
+    "footer": {
+        "download": {
+            "googlePlay": {
+                "label": "Скачать из",
+                "platform": "Google Play"
+            },
+            "appStore": {
+                "label": "Загрузите в",
+                "platform": "App Store"
+            }
+        },
+        "about": {
+            "title": "О нас",
+            "links": {
+                "offer": "Публичная оферта",
+                "ads": "Реклама",
+                "faq": "F.A.Q",
+                "contacts": "Контакты"
+            }
+        },
+        "categories": {
+            "title": "Категории",
+            "items": {
+                "movies": "Кино",
+                "theater": "Театр",
+                "concerts": "Концерты",
+                "sports": "Спорт"
+            }
+        },
+        "contact": {
+            "title": "Связаться с нами",
+            "phone": "+998 (95) 897-33-38"
+        },
+        "social": {
+            "title": "Социальные сети",
+            "platforms": {
+                "instagram": "Инстаграм",
+                "facebook": "Фейсбук",
+                "youtube": "Ютуб"
+            }
+        }
+    },
+    "detail": {
+        "overview": "Обзор",
+        "releaseDate": "Дата выпуска:",
+        "runtime": "Продолжительность:",
+        "genres": "Жанры:",
+        "production": "Производство:",
+        "gallery": "Галерея"
+    }
+}

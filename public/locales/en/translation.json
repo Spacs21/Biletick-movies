@@ -1,0 +1,68 @@
+{
+    "lang": "en",
+    "flag": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Flag_of_the_United_Kingdom_%281-2%29.svg/1200px-Flag_of_the_United_Kingdom_%281-2%29.svg.png",
+    "genres": "Genres",
+    "buy": "Buy Ticket",
+    "search": "Search for movies...",
+    "week": {
+        "title": "This Week",
+        "more": "Show All"
+    },
+    "header": {
+        "home": "Home",
+        "genres": "Genres",
+        "tickets": "Tickets",
+        "search": "Search"
+    },
+    "sign": "Sign-in",
+    "footer": {
+        "download": {
+            "googlePlay": {
+                "label": "Download from",
+                "platform": "Google Play"
+            },
+            "appStore": {
+                "label": "Get it on",
+                "platform": "App Store"
+            }
+        },
+        "about": {
+            "title": "About Us",
+            "links": {
+                "offer": "Terms of Service",
+                "ads": "Advertising",
+                "faq": "FAQ",
+                "contacts": "Contact Us"
+            }
+        },
+        "categories": {
+            "title": "Categories",
+            "items": {
+                "movies": "Movies",
+                "theater": "Theater",
+                "concerts": "Concerts",
+                "sports": "Sports"
+            }
+        },
+        "contact": {
+            "title": "Contact Us",
+            "phone": "+1 (800) 123-4567"
+        },
+        "social": {
+            "title": "Social Networks",
+            "platforms": {
+                "instagram": "Instagram",
+                "facebook": "Facebook",
+                "youtube": "YouTube"
+            }
+        }
+    },
+    "detail": {
+        "overview": "Overview",
+        "releaseDate": "Release Date:",
+        "runtime": "Runtime:",
+        "genres": "Genres:",
+        "production": "Production:",
+        "gallery": "Gallery"
+    }
+}
